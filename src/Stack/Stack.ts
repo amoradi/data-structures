@@ -1,8 +1,9 @@
 type Items = { [item: number]: any };
 
 interface StackInterface {
+  readonly stack: Array<any>;
+  readonly size: number;
   isEmpty(): boolean;
-  size(): number;
   toString(): string;
   push(item: any): void;
   pop(): any;
@@ -18,20 +19,27 @@ class Stack implements StackInterface {
     this.count = 0;
   }
 
-  private returnUndefinedWhenEmpty() {
-    if (this.isEmpty()) return undefined;
+  // returns [base, ..., top]
+  get stack() {
+    const stack: Array<any> = [];
+
+    Object.entries(this.items).forEach(([index, value]) => {
+      stack[parseInt(index)] = value;
+    });
+
+    return stack;
+  }
+
+  get size() {
+    return this.count;
   }
 
   isEmpty() {
     return this.count === 0;
   }
 
-  size() {
-    return this.count;
-  }
-
   toString() {
-    return JSON.stringify(this.items);
+    return JSON.stringify(this.stack);
   }
 
   push(item: any) {
@@ -40,7 +48,7 @@ class Stack implements StackInterface {
   }
 
   pop() {
-    this.returnUndefinedWhenEmpty();
+    if (this.isEmpty()) return undefined;
 
     const top = this.items[this.count - 1];
 
@@ -50,7 +58,7 @@ class Stack implements StackInterface {
   }
 
   peek() {
-    this.returnUndefinedWhenEmpty();
+    if (this.isEmpty()) return undefined;
 
     if (this.count > 0) {
       return this.items[this.count - 1];
