@@ -1,16 +1,18 @@
 type Items = { [item: number]: any };
 
-interface StackInterface {
-  readonly stack: Array<any>;
-  readonly size: number;
+interface Stack {
   isEmpty(): boolean;
   toString(): string;
   push(item: any): void;
   pop(): any;
   peek(): any;
+
+  // alias methods
+  front: typeof Stack.prototype.peek;
 }
 
-class Stack implements StackInterface {
+// An object-based approach to a Stack
+class Stack implements Stack {
   private items: Items;
   private count: number;
 
@@ -34,6 +36,11 @@ class Stack implements StackInterface {
     return this.count;
   }
 
+  clear() {
+    this.items = {};
+    this.count = 0;
+  }
+
   isEmpty() {
     return this.count === 0;
   }
@@ -42,9 +49,12 @@ class Stack implements StackInterface {
     return JSON.stringify(this.stack);
   }
 
-  push(item: any) {
-    this.items[this.count] = item;
-    this.count++;
+  peek() {
+    if (this.isEmpty()) return undefined;
+
+    if (this.count > 0) {
+      return this.items[this.count - 1];
+    }
   }
 
   pop() {
@@ -57,13 +67,13 @@ class Stack implements StackInterface {
     return top;
   }
 
-  peek() {
-    if (this.isEmpty()) return undefined;
-
-    if (this.count > 0) {
-      return this.items[this.count - 1];
-    }
+  push(item: any) {
+    this.items[this.count] = item;
+    this.count++;
   }
 }
+
+// alias methods
+Stack.prototype.front = Stack.prototype.peek;
 
 export { Stack };

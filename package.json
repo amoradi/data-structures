@@ -1,7 +1,7 @@
 {
   "name": "data-structures-in-typescript",
   "version": "1.0.0",
-  "description": "A buffet of common data structures",
+  "description": "A buffet of common data structures written in TypeScript",
   "main": "index.js",
   "scripts": {
     "test": "jest",
