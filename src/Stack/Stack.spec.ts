@@ -1,6 +1,6 @@
 import { Stack } from "./index";
 
-describe("Stack", () => {
+describe("Stack class", () => {
   let testStack: Stack;
 
   beforeEach(() => {
@@ -92,28 +92,12 @@ describe("Stack", () => {
     expect(testStack.peek()).toBe(0);
   });
 
-  // front
-  it("Should front (peek alias) from the top ('front') of the stack", () => {
-    testStack.push(1);
-    testStack.push(2);
-    expect(testStack.front()).toBe(2);
-    testStack.push("2");
-    testStack.push(2);
-    testStack.push(4);
-    testStack.push(0);
-    expect(testStack.front()).toBe(0);
-  });
-
   // peek & front
   it("Should not mutate stack when peeking/fronting", () => {
     testStack.push(1);
     testStack.push(2);
     testStack.peek();
     expect(testStack.stack).toEqual([1, 2]);
-    testStack.push("2");
-    testStack.push(2);
-    testStack.front();
-    expect(testStack.stack).toEqual([1, 2, "2", 2]);
   });
 
   // push

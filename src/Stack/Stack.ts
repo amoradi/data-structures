@@ -1,24 +1,10 @@
-type Items = { [item: number]: any };
-
-interface Stack {
-  isEmpty(): boolean;
-  toString(): string;
-  push(item: any): void;
-  pop(): any;
-  peek(): any;
-
-  // alias methods
-  front: typeof Stack.prototype.peek;
-}
+import { Collection } from "../shared/abstractClasses";
 
 // An object-based approach to a Stack
-class Stack implements Stack {
-  private items: Items;
-  private count: number;
-
+// e.g. this.items = {}
+class Stack extends Collection {
   constructor() {
-    this.items = {};
-    this.count = 0;
+    super();
   }
 
   // returns [base, ..., top]
@@ -41,10 +27,6 @@ class Stack implements Stack {
     this.count = 0;
   }
 
-  isEmpty() {
-    return this.count === 0;
-  }
-
   toString() {
     return JSON.stringify(this.stack);
   }
@@ -52,9 +34,7 @@ class Stack implements Stack {
   peek() {
     if (this.isEmpty()) return undefined;
 
-    if (this.count > 0) {
-      return this.items[this.count - 1];
-    }
+    return this.items[this.count - 1];
   }
 
   pop() {
@@ -66,14 +46,6 @@ class Stack implements Stack {
     delete this.items[this.count];
     return top;
   }
-
-  push(item: any) {
-    this.items[this.count] = item;
-    this.count++;
-  }
 }
-
-// alias methods
-Stack.prototype.front = Stack.prototype.peek;
 
 export { Stack };
