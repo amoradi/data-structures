@@ -14,6 +14,14 @@ class Queue extends Collection implements Queue {
     super();
     this.lowestCount = 0;
   }
+
+  peek() {}
+
+  pop() {}
+
+  toString() {
+    return "";
+  }
 }
 
 // alias methods

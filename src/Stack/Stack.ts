@@ -18,17 +18,9 @@ class Stack extends Collection {
     return stack;
   }
 
-  get size() {
-    return this.count;
-  }
-
   clear() {
     this.items = {};
     this.count = 0;
-  }
-
-  toString() {
-    return JSON.stringify(this.stack);
   }
 
   peek() {
@@ -45,6 +37,10 @@ class Stack extends Collection {
     this.count--;
     delete this.items[this.count];
     return top;
+  }
+
+  toString() {
+    return JSON.stringify(this.stack);
   }
 }
 

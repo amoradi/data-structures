@@ -10,9 +10,9 @@ abstract class Collection implements CollectionInterface {
     this.count = 0;
   }
 
-  abstract peek(): any;
-  abstract pop(): any;
-  abstract toString(): string;
+  get size() {
+    return this.count;
+  }
 
   isEmpty(): boolean {
     return this.count === 0;
@@ -22,6 +22,10 @@ abstract class Collection implements CollectionInterface {
     this.items[this.count] = item;
     this.count++;
   }
+
+  abstract peek(): any;
+  abstract pop(): any;
+  abstract toString(): string;
 }
 
 export { Collection };
