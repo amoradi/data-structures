@@ -3,29 +3,64 @@ import { Collection as CollectionInterface } from "../shared/interfaces";
 
 interface Queue extends CollectionInterface {
   // alias methods
-  enque: typeof Queue.prototype.push;
-  denque: typeof Queue.prototype.pop;
+  enqueue: typeof Queue.prototype.push;
+  dequeue: typeof Queue.prototype.pop;
 }
 
 class Queue extends Collection implements Queue {
-  private lowestCount: number;
+  private frontItemCount: number;
 
   constructor() {
     super();
-    this.lowestCount = 0;
+    this.frontItemCount = 0;
   }
 
-  peek() {}
+  get size() {
+    return this.count - this.frontItemCount;
+  }
 
-  pop() {}
+  get queue() {
+    // returns [front, ..., rear]
+    const queue: Array<any> = [];
+
+    Object.entries(this.items).forEach(([index, value]) => {
+      queue[parseInt(index) - this.frontItemCount] = value;
+    });
+
+    return queue;
+  }
+
+  clear() {
+    super.clear();
+    this.frontItemCount = 0;
+  }
+
+  peek() {
+    if (this.isEmpty()) return undefined;
+
+    return this.items[this.frontItemCount];
+  }
+
+  pop() {
+    if (this.isEmpty()) return undefined;
+
+    const front = this.items[this.frontItemCount];
+
+    delete this.items[this.frontItemCount];
+    this.frontItemCount++;
+
+    return front;
+  }
 
   toString() {
-    return "";
+    if (this.isEmpty()) return "";
+
+    return JSON.stringify(this.queue);
   }
 }
 
 // alias methods
-Queue.prototype.enque = Queue.prototype.push;
-Queue.prototype.denque = Queue.prototype.pop;
+Queue.prototype.enqueue = Queue.prototype.push;
+Queue.prototype.dequeue = Queue.prototype.pop;
 
 export { Queue };

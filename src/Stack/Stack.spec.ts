@@ -81,7 +81,7 @@ describe("Stack class", () => {
   });
 
   // peek
-  it("Should peek from the top ('front') of the stack", () => {
+  it("Should peek the top (front) of the stack", () => {
     testStack.push(1);
     testStack.push(2);
     expect(testStack.peek()).toBe(2);
@@ -101,7 +101,7 @@ describe("Stack class", () => {
   });
 
   // push
-  it("Should push items to the stack top of the stack", () => {
+  it("Should push items to the top of the stack", () => {
     testStack.push(55);
     expect(testStack.size).toBe(1);
     expect(testStack.stack).toEqual([55]);

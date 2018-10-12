@@ -18,11 +18,6 @@ class Stack extends Collection {
     return stack;
   }
 
-  clear() {
-    this.items = {};
-    this.count = 0;
-  }
-
   peek() {
     if (this.isEmpty()) return undefined;
 

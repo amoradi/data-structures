@@ -14,8 +14,13 @@ abstract class Collection implements CollectionInterface {
     return this.count;
   }
 
+  clear() {
+    this.items = {};
+    this.count = 0;
+  }
+
   isEmpty(): boolean {
-    return this.count === 0;
+    return this.size === 0;
   }
 
   push(item: any) {
