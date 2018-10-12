@@ -14,7 +14,7 @@ abstract class Collection implements CollectionInterface {
     this.count = 0;
   }
 
-  get size() {
+  get size(): number {
     return this.count;
   }
 
