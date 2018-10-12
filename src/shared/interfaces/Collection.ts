@@ -1,9 +1,11 @@
 interface Collection {
+  clear(): void;
   isEmpty(): boolean;
-  toString(): string;
-  push(item: any): void;
-  pop(): any;
   peek(): any;
+  pop(): any;
+  push(item: any): void;
+  size: number;
+  toString(): string;
 }
 
 export { Collection };

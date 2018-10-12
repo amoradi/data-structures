@@ -15,10 +15,6 @@ class Queue extends Collection implements Queue {
     this.frontItemCount = 0;
   }
 
-  get size() {
-    return this.count - this.frontItemCount;
-  }
-
   get queue() {
     // returns [front, ..., rear]
     const queue: Array<any> = [];
@@ -28,6 +24,10 @@ class Queue extends Collection implements Queue {
     });
 
     return queue;
+  }
+
+  get size() {
+    return this.count - this.frontItemCount;
   }
 
   clear() {
