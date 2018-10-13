@@ -1,13 +1,13 @@
 import { Collection } from "../shared/abstractClasses";
 import { Collection as CollectionInterface } from "../shared/interfaces";
 
-interface Queue extends CollectionInterface {
+interface Queue<T> extends CollectionInterface<T> {
   // alias methods
   enqueue: typeof Queue.prototype.push;
   dequeue: typeof Queue.prototype.pop;
 }
 
-class Queue extends Collection implements Queue {
+class Queue<T> extends Collection<T> implements Queue<T> {
   private frontItemCount: number;
 
   constructor() {
@@ -17,7 +17,7 @@ class Queue extends Collection implements Queue {
 
   get queue() {
     // returns [front, ..., rear]
-    const queue: Array<any> = [];
+    const queue: Array<T> = [];
 
     Object.entries(this.items).forEach(([index, value]) => {
       queue[parseInt(index) - this.frontItemCount] = value;

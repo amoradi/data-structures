@@ -2,14 +2,14 @@ import { Collection } from "../shared/abstractClasses";
 
 // An object-based approach to a Stack
 // e.g. this.items = {}
-class Stack extends Collection {
+class Stack<T> extends Collection<T> {
   constructor() {
     super();
   }
 
   // returns [base, ..., top]
   get stack() {
-    const stack: Array<any> = [];
+    const stack: Array<T> = [];
 
     Object.entries(this.items).forEach(([index, value]) => {
       stack[parseInt(index)] = value;

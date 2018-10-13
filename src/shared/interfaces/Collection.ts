@@ -1,9 +1,9 @@
-interface Collection {
+interface Collection<T> {
   clear(): void;
   isEmpty(): boolean;
-  peek(): any;
-  pop(): any;
-  push(item: any): void;
+  peek(): T;
+  pop(): T;
+  push(item: T): void;
   size: number;
   toString(): string;
 }

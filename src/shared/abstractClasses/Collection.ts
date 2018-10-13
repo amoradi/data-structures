@@ -1,12 +1,12 @@
 import { Collection as CollectionInterface } from "../interfaces";
 import { Items } from "../types";
 
-abstract class Collection implements CollectionInterface {
+abstract class Collection<T> implements CollectionInterface<T> {
   protected items: Items;
   protected count: number;
 
-  abstract peek(): any;
-  abstract pop(): any;
+  abstract peek(): T;
+  abstract pop(): T;
   abstract toString(): string;
 
   constructor() {
@@ -27,7 +27,7 @@ abstract class Collection implements CollectionInterface {
     return this.size === 0;
   }
 
-  push(item: any) {
+  push(item: T) {
     this.items[this.count] = item;
     this.count++;
   }
