@@ -17,7 +17,7 @@ class Deque<T> extends Collection<T> {
 
   get deque() {
     // returns [front, ..., rear]
-    const deque: Array<T> = [];
+    const deque: Array<any> = [];
 
     Object.entries(this.items).forEach(([index, value]) => {
       deque[parseInt(index) - this.lowestCount] = value;

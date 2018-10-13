@@ -9,7 +9,7 @@ class Stack<T> extends Collection<T> {
 
   // returns [base, ..., top]
   get stack() {
-    const stack: Array<T> = [];
+    const stack: Array<any> = [];
 
     Object.entries(this.items).forEach(([index, value]) => {
       stack[parseInt(index)] = value;

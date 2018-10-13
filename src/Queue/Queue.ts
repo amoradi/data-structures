@@ -17,7 +17,7 @@ class Queue<T> extends Collection<T> implements Queue<T> {
 
   get queue() {
     // returns [front, ..., rear]
-    const queue: Array<T> = [];
+    const queue: Array<any> = [];
 
     Object.entries(this.items).forEach(([index, value]) => {
       queue[parseInt(index) - this.frontItemCount] = value;

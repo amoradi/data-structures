@@ -1,3 +1,3 @@
-type Items = { [item: number]: any };
+type Items<T> = { [item: number]: T };
 
 export { Items };
